@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+    <p>{{ product.price }} €</p>
+    <img src="{{ asset('/images/' ~ product.Image_main) }}" alt="{{ product.name }}">
+{% endblock %}
