@@ -1,0 +1,53 @@
+
+
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/appPresentation.css') }}">
+{% endblock %}
+
+{% block title %}La Besnerie{% endblock %}
+
+
+
+{% block body %}
+    
+    <ul>
+        <li><a href="{{ path('accueil') }}">Accueil</a></li>
+        <li><a href="{{ path('media') }}">Media</a></li>
+        <li><a href="{{ path('produit') }}">Boutique</a></li>
+        <li><a href="{{ path('contact') }}">Contact</a></li>
+    </ul>
+
+    <div class="color-band"></div>
+
+    <div class="text_body">  
+        <p>
+            La Ferme de La Besnerie est une exploitation agricole de polyculture - élevage situé à Chahaignes en Sarthe (72)
+            La Ferme de la Besnerie est une exploitation agricole familiale qui a été repris en novembre 2023 par Mr CAFFIN et Mme SAUTREAU
+
+            L’exploitation élève des bovins allaitants de la race Charolaise
+            Les bovins sont nourris avec des céréales produites sur l’exploitation et du fourrages frais ou en enrubanner composée d'herbe, de luzerne et de trèfle
+            Les bovins sont élevés en plein air et sont emmenés en pâture dès que la météo le permet
+
+
+            Les chèvres laitières sont de la race Alpines. Certains boucs de la ferme provienne de la Chèvrerie de la Croix Verte situé à Nesploy dans le Loiret
+            Les chèvres sont traite 2 fois par jours le soir ainsi le matin et en monotraite en hiver lorsque la production de lait commence à diminuer
+            Le lait produit est transformé en fromage de chèvre frais, crémeux, demi-sec, sec, cendré, aromatisé, en faisselle, en yaourt et en fromage blanc. Du lait de chèvre cru peut également être vendu
+
+            La mise en reproduction des chèvres à lieu en autonme suivi de la gestation pour une mise bas de janvier à mars
+            Lors de la gestation, les chèvres ont un régime alimentaire adapté pour leurs besoins afin de faciliter les mise bas
+            La majorité du cheptel est inséminé afin d'améliorer la génétique du troupeau et ainsi éviter le consanguinité
+            Les chevreaux sont élevés au biberon et sont nourris avec du lait de chèvre en poudre
+            Lorsque les chevreaux atteindront le stade de chevrette, elles devront avoir une 1ère naissance pour qu'elles devienne primipare et ainsi avoir leur première production de lait
+
+
+            Des volailles fermiers pour la marque Loué
+            Les volailles sont élevées en plein air et sont nourris avec des céréales produites sur l’exploitation
+
+            L’exploitation cultives également des céréales tel que du blé, de l'orge, de l'escourgeon, du colza, du maïs ou du tournesol sur une surface de 200 hectares
+            Il y a également 50 hectares de prairies pour les animaux et pour cultiver de la luzerne
+            
+        </p>
+    </div>
+    
+{% endblock %}

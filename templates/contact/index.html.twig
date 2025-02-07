@@ -1,8 +1,5 @@
 
 
-
-
-
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/appAccueil.css') }}">
@@ -11,26 +8,21 @@
 {% block title %}La Besnerie{% endblock %}
 
 
+
 {% block body %}
+    
 
     <ul>
         <li><a href="{{ path('accueil') }}">Accueil</a></li>
         <li><a href="{{ path('presentation') }}">Presentation</a></li>
         <li><a href="{{ path('media') }}">Media</a></li>
-        <li><a href="{{ path('contact') }}">Contact</a></li>
+        <li><a href="{{ path('produit') }}">Boutique</a></li>
     </ul>
 
     <div class="color-band"></div>
 
-
-    <h1>Produits</h1>
-    <a href="{{ path('produit_new') }}">Ajouter un produit</a>
-    <ul>
-        {% for produit in produits %}
-            <li>
-                <a href="{{ path('produit_show', {'id': produit.id}) }}">{{ produit.name }}</a>
-                - {{ produit.price }} €
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="text_body">
+        
+    </div>
+    
 {% endblock %}

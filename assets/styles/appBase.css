@@ -1,0 +1,54 @@
+header img {
+    width: -webkit-fill-available;
+    height: 500px;
+}
+
+body {
+    background-color: #FF7700;
+}
+
+body ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+body ul li {
+    
+    list-style-type:none;
+}
+
+body ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+body .color-band {
+    background-color: #000000;
+    height: 3px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+
+footer {
+    width: -webkit-fill-available;
+    display: inline-block;
+    position: relative;
+}
+    
+footer img {
+    width: -webkit-fill-available;
+    height: 500px;
+    filter: brightness(50%);
+}
+
+footer p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    color: rgb(255, 255, 255);
+    font-size: xx-large;
+    margin: 0;
+}

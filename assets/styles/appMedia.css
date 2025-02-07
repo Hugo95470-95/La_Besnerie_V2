@@ -1,0 +1,21 @@
+
+.img_body{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.img_body img {
+    width: 24%;
+    margin : 20px;
+    transition: transform 0.3s ease;
+    cursor: pointer; 
+}
+
+.img_body img.enlarged {
+    transform: scale(2);
+    z-index: 10;
+    position: absolute;
+    top: 240%;
+    left: 40%;
+}

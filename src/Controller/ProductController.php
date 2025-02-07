@@ -35,7 +35,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
-    #[Route('/produits', name: 'produit_index')]
+    #[Route('/produits', name: 'produit')]
     public function index(ProductRepository $produitRepository): Response
     {
         $produits = $produitRepository->findAll();
