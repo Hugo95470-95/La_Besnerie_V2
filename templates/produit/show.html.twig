@@ -1,8 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block content %}
+{# {% block content %}
     <h1>{{ product.name }}</h1>
     <p>{{ product.description }}</p>
     <p>{{ product.price }} €</p>
     <img src="{{ asset('/images/' ~ product.Image_main) }}" alt="{{ product.name }}">
+{% endblock %} #}
+
+
+{% block title %}Produit - {{ produit.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ produit.name }}</h1>
+    <p>{{ produit.description }}</p>
+    <p>Prix : {{ produit.price }} </p>
+    <p>Catégorie : {{ produit.category }}</p>
+    {% if produit.imageMain %}
+        <img src="{{ asset('uploads/images/' ~ produit.imageMain) }}" alt="{{ produit.name }}">
+    {% endif %}
+    {% if produit.imageSupp %}
+        <img src="{{ asset('uploads/images/' ~ produit.imageSupp) }}" alt="{{ produit.name }}">
+    {% endif %}
+    <a href="{{ path('produit') }}">Retour à la liste des produits</a>
+
+    <form method="post" action="{{ path('produit_delete', {id: produit.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
+        <button class="btn btn-danger">Supprimer</button>
+    </form>
 {% endblock %}

@@ -2,7 +2,7 @@
 
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/appAccueil.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/appContact.css') }}">
 {% endblock %}
 
 {% block title %}La Besnerie{% endblock %}
@@ -21,7 +21,32 @@
 
     <div class="color-band"></div>
 
-    <div class="text_body">
+    <div class="body_contact">
+
+    <div class="maps">
+        <iframe
+            loading="lazy"
+            allowfullscreen
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2344.8939619977887!2d0.4931777129267897!3d47.7314611839257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e2c3337bca0485%3A0x96ef21074d22bfaa!2sFerme%20de%20la%20Besnerie!5e1!3m2!1sfr!2sfr!4v1739360619549!5m2!1sfr!2sfr">
+        </iframe>
+    </div>
+
+
+
+    <h1>Contactez-nous</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.message) }}
+            {{ form_row(form.send) }}
+        {{ form_end(form) }}
         
     </div>
     

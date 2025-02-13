@@ -1,0 +1,11 @@
+.body_contact .maps {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.body_contact .maps iframe {
+    width: 600px;
+    height: 450px;
+    border: 0;
+}
