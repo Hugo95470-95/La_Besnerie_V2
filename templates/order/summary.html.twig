@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résumé de la commande{% endblock %}
+
+{% block body %}
+    <h1>Résumé de la commande</h1>
+
+    {% if cart is empty %}
+        <p>Votre panier est vide.</p>
+    {% else %}
+        <ul>
+            {% for item in cart %}
+                <li>
+                    <img src="{{ asset('uploads/images/' ~ item.product.imageMain) }}" alt="{{ item.product.name }}" style="max-width: 100px; max-height: 100px;">
+                    {{ item.product.name }} - {{ item.product.price }} € x {{ item.quantity }}
+                </li>
+            {% endfor %}
+        </ul>
+        <form method="post" action="{{ path('summary') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('validate_cart') }}">
+            <button class="btn btn-success">Valider la commande</button>
+        </form>
+    {% endif %}
+
+    <a href="{{ path('produit_index') }}">Continuer vos achats</a>
+{% endblock %}

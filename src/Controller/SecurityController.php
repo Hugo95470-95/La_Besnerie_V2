@@ -13,7 +13,7 @@ class SecurityController extends AbstractController
     {
         // Redirige l'utilisateur connecté vers une autre page
         if ($this->getUser()) {
-            return $this->redirectToRoute('produit_index');
+            return $this->redirectToRoute('produit');
         }
 
         // Récupère l'erreur de connexion s'il y en a une

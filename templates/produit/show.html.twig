@@ -1,11 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{# {% block content %}
-    <h1>{{ product.name }}</h1>
-    <p>{{ product.description }}</p>
-    <p>{{ product.price }} €</p>
-    <img src="{{ asset('/images/' ~ product.Image_main) }}" alt="{{ product.name }}">
-{% endblock %} #}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/appProductID.css') }}">
+{% endblock %}
 
 
 {% block title %}Produit - {{ produit.name }}{% endblock %}
@@ -23,8 +20,13 @@
     {% endif %}
     <a href="{{ path('produit') }}">Retour à la liste des produits</a>
 
-    <form method="post" action="{{ path('produit_delete', {id: produit.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">
+    <form method="post" action="{{ path('cart_add', {id: produit.id}) }}">
+        <input type="hidden" name="_token" value="{{ csrf_token('add_to_cart' ~ produit.id) }}">
+        <button class="btn btn-primary">Ajouter au panier</button>
+    </form>
+    
+    {# <form method="post" action="{{ path('produit_delete', {id: produit.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
         <button class="btn btn-danger">Supprimer</button>
-    </form>
+    </form> #}
 {% endblock %}

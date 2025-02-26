@@ -10,6 +10,8 @@
 // use Symfony\Component\HttpFoundation\Request;
 // use Symfony\Component\HttpFoundation\Response;
 // use Symfony\Component\Routing\Annotation\Route;
+// use Symfony\Component\String\Slugger\SluggerInterface;
+// use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
 // class ProductController extends AbstractController
@@ -25,17 +27,54 @@
 //     }
 
 //     #[Route('/produit/new', name: 'produit_new')]
-//     public function new(Request $request, EntityManagerInterface $entityManager): Response
+//     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
 //     {
 //         $produit = new Product();
 //         $form = $this->createForm(ProductType::class, $produit);
 //         $form->handleRequest($request);
 
 //         if ($form->isSubmitted() && $form->isValid()) {
+//             $imageMainFile = $form->get('Image_main')->getData();
+//             $imageSuppFile = $form->get('imageSupp')->getData();
+
+//             if ($imageMainFile) {
+//                 $originalFilename = pathinfo($imageMainFile->getClientOriginalName(), PATHINFO_FILENAME);
+//                 $safeFilename = $slugger->slug($originalFilename);
+//                 $newFilename = $safeFilename.'-'.uniqid().'.'.$imageMainFile->guessExtension();
+
+//                 try {
+//                     $imageMainFile->move(
+//                         $this->getParameter('images_directory'),
+//                         $newFilename
+//                     );
+//                 } catch (FileException $e) {
+//                     // handle exception if something happens during file upload
+//                 }
+
+//                 $produit->setImageMain($newFilename);
+//             }
+
+//             if ($imageSuppFile) {
+//                 $originalFilename = pathinfo($imageSuppFile->getClientOriginalName(), PATHINFO_FILENAME);
+//                 $safeFilename = $slugger->slug($originalFilename);
+//                 $newFilename = $safeFilename.'-'.uniqid().'.'.$imageSuppFile->guessExtension();
+
+//                 try {
+//                     $imageSuppFile->move(
+//                         $this->getParameter('images_directory'),
+//                         $newFilename
+//                     );
+//                 } catch (FileException $e) {
+//                     // handle exception if something happens during file upload
+//                 }
+
+//                 $produit->setImageSupp($newFilename);
+//             }
+
 //             $entityManager->persist($produit);
 //             $entityManager->flush();
 
-//             return $this->redirectToRoute('produits');
+//             return $this->redirectToRoute('produit');
 //         }
 
 //         return $this->render('produit/new.html.twig', [
@@ -49,6 +88,17 @@
 //         return $this->render('produit/show.html.twig', [
 //             'produit' => $produit,
 //         ]);
+//     }
+
+//     #[Route('/produit/{id}/delete', name: 'produit_delete', methods: ['POST'])]
+//     public function delete(Request $request, Product $produit, EntityManagerInterface $entityManager): Response
+//     {
+//         if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
+//             $entityManager->remove($produit);
+//             $entityManager->flush();
+//         }
+
+//         return $this->redirectToRoute('produit');
 //     }
 // }
 
@@ -64,6 +114,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ProductController extends AbstractController
 {
@@ -86,7 +137,7 @@ class ProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $imageMainFile = $form->get('imageMain')->getData();
-            $imageSuppFile = $form->get('imageSupp')->getData();
+            // $imageSuppFile = $form->get('imageSupp')->getData();
 
             if ($imageMainFile) {
                 $originalFilename = pathinfo($imageMainFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -95,7 +146,7 @@ class ProductController extends AbstractController
 
                 try {
                     $imageMainFile->move(
-                        $this->getParameter('images_main'),
+                        $this->getParameter('images_directory'),
                         $newFilename
                     );
                 } catch (FileException $e) {
@@ -105,22 +156,22 @@ class ProductController extends AbstractController
                 $produit->setImageMain($newFilename);
             }
 
-            if ($imageSuppFile) {
-                $originalFilename = pathinfo($imageSuppFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageSuppFile->guessExtension();
+            // if ($imageSuppFile) {
+            //     $originalFilename = pathinfo($imageSuppFile->getClientOriginalName(), PATHINFO_FILENAME);
+            //     $safeFilename = $slugger->slug($originalFilename);
+            //     $newFilename = $safeFilename.'-'.uniqid().'.'.$imageSuppFile->guessExtension();
 
-                try {
-                    $imageSuppFile->move(
-                        $this->getParameter('images_supp'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // handle exception if something happens during file upload
-                }
+            //     try {
+            //         $imageSuppFile->move(
+            //             $this->getParameter('images_directory'),
+            //             $newFilename
+            //         );
+            //     } catch (FileException $e) {
+            //         // handle exception if something happens during file upload
+            //     }
 
-                $produit->setImageSupp($newFilename);
-            }
+            //     $produit->setImageSupp($newFilename);
+            // }
 
             $entityManager->persist($produit);
             $entityManager->flush();
@@ -141,14 +192,34 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/produit/{id}/delete', name: 'produit_delete', methods: ['POST'])]
-    public function delete(Request $request, Product $produit, EntityManagerInterface $entityManager): Response
+    // #[Route('/produit/{id}/delete', name: 'produit_delete', methods: ['POST'])]
+    // public function delete(Request $request, Product $produit, EntityManagerInterface $entityManager): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
+    //         $entityManager->remove($produit);
+    //         $entityManager->flush();
+    //     }
+
+    //     return $this->redirectToRoute('produit');
+    // }
+
+    #[Route('/produit/{id}/order', name: 'order', methods: ['POST'])]
+    public function addToCart(Product $produit, SessionInterface $session): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($produit);
-            $entityManager->flush();
+        $cart = $session->get('cart', []);
+        $id = $produit->getId();
+
+        if (!isset($cart[$id])) {
+            $cart[$id] = [
+                'product' => $produit,
+                'quantity' => 1
+            ];
+        } else {
+            $cart[$id]['quantity']++;
         }
 
-        return $this->redirectToRoute('produit');
+        $session->set('cart', $cart);
+
+        return $this->redirectToRoute('produit_show', ['id' => $id]);
     }
 }

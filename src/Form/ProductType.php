@@ -1,43 +1,5 @@
 <?php
 
-// namespace App\Form;
-
-// use App\Entity\Product;
-// use Symfony\Component\Form\AbstractType;
-// use Symfony\Component\Form\FormBuilderInterface;
-// use Symfony\Component\OptionsResolver\OptionsResolver;
-// use Symfony\Component\Form\Extension\Core\Type\TextType;
-// use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-// use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-
-// class ProductType extends AbstractType
-// {
-//     public function buildForm(FormBuilderInterface $builder, array $options): void
-//     {
-//         $builder
-//         ->add('name', TextType::class)
-//         ->add('description', TextareaType::class)
-//         ->add('price', MoneyType::class)
-//         ->add('image_main', TextType::class)
-//         ->add('category', TextType::class)
-//         ->add('image_supp', TextType::class);
-//         ;
-//     }
-
-//     public function configureOptions(OptionsResolver $resolver): void
-//     {
-//         $resolver->setDefaults([
-//             // Configure your form options here
-//             // 'data_class' => Product::class,
-//         ]);
-//     }
-// }
-
-
-
-
-
-
 namespace App\Form;
 
 use App\Entity\Product;
@@ -72,7 +34,7 @@ class ProductType extends AbstractType
                 'label' => 'Catégorie',
                 'attr' => ['class' => 'form-control']
             ])
-            ->add('imageMain', FileType::class, [
+            ->add('Image_main', FileType::class, [
                 'label' => 'Image principale',
                 'mapped' => false,
                 'required' => false,

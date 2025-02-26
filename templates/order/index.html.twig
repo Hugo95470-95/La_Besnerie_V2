@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Panier{% endblock %}
+
+{% block body %}
+    <h1>Mon Panier</h1>
+
+    {% if cart is empty %}
+        <p>Votre panier est vide.</p>
+    {% else %}
+        <ul>
+            {% for item in cart %}
+                <li>
+                    <img src="{{ asset('uploads/images/' ~ item.product.imageMain) }}" alt="{{ item.product.name }}" style="max-width: 100px; max-height: 100px;">
+                    {{ item.product.name }} - {{ item.product.price }} € x {{ item.quantity }}
+                    <form method="post" action="{{ path('cart_remove', {id: item.product.id}) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('remove' ~ item.product.id) }}">
+                        <button class="btn btn-danger">Supprimer</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <form method="post" action="{{ path('cart_validate') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('validate_cart') }}">
+            <button class="btn btn-success">Valider le panier</button>
+        </form>
+    {% endif %}
+
+    <a href="{{ path('produit') }}">Continuer vos achats</a>
+{% endblock %}

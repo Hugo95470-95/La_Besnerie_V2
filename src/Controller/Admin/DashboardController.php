@@ -40,3 +40,8 @@ class DashboardController extends AbstractDashboardController
 
     }
 }
+
+
+// identifiant admin
+// hcaffin@gmail.com
+// azerty
