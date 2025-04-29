@@ -157,8 +157,8 @@ class Product
     #[ORM\Column(type: Types::TEXT)]
     private ?string $Image_main = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $Image_supp = null;
+    // #[ORM\Column(type: Types::TEXT)]
+    // private ?string $Image_supp = null;
 
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
@@ -216,10 +216,10 @@ class Product
         return $this;
     }
 
-    public function getImageSupp(): ?string
-    {
-        return $this->Image_supp;
-    }
+    // public function getImageSupp(): ?string
+    // {
+    //     return $this->Image_supp;
+    // }
 
     public function setImageSupp(string $Image_supp): self
     {

@@ -24,25 +24,31 @@
 
     <div class="img_body">
 
-        <img src="{{ asset('images/image0.jpg') }}" alt="image0">
-        <img src="{{ asset('images/image1.jpg') }}" alt="image1">
-        <img src="{{ asset('images/image2.jpg') }}" alt="image2">
-        <img src="{{ asset('images/image3.jpg') }}" alt="image3">
-        <img src="{{ asset('images/image4.jpg') }}" alt="image4">
-        <img src="{{ asset('images/image5.jpg') }}" alt="image5">
-        <img src="{{ asset('images/image6.jpg') }}" alt="image6">
-        <img src="{{ asset('images/image7.jpg') }}" alt="image7">
-        <img src="{{ asset('images/image8.jpg') }}" alt="image8">
-        <img src="{{ asset('images/image9.jpg') }}" alt="image9">
-        <img src="{{ asset('images/image10.jpg') }}" alt="image10">
-        <img src="{{ asset('images/image11.jpg') }}" alt="image11">
-        <img src="{{ asset('images/image12.jpg') }}" alt="image12">
-        <img src="{{ asset('images/image13.jpg') }}" alt="image13">
-        <img src="{{ asset('images/image14.jpg') }}" alt="image14">
-        <img src="{{ asset('images/image15.jpg') }}" alt="image15">
-        <img src="{{ asset('images/image16.jpg') }}" alt="image16">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image0_resultat.webp') }}" alt="image0">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image1_resultat.webp') }}" alt="image1">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image2_resultat.webp') }}" alt="image2">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image3_resultat.webp') }}" alt="image3">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image4_resultat.webp') }}" alt="image4">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image5_resultat.webp') }}" alt="image5">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image6_resultat.webp') }}" alt="image6">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image7_resultat.webp') }}" alt="image7">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image8_resultat.webp') }}" alt="image8">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image9_resultat.webp') }}" alt="image9">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image10_resultat.webp') }}" alt="image10">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image11_resultat.webp') }}" alt="image11">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image12_resultat.webp') }}" alt="image12">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image13_resultat.webp') }}" alt="image13">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image14_resultat.webp') }}" alt="image14">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image15_resultat.webp') }}" alt="image15">
+        <img class="zoomable-image" data-modal="image-modal" src="{{ asset('images/image16_resultat.webp') }}" alt="image16">
 
     </div>
     
+    <div id="image-modal" class="modal">
+        <span class="close">&times;</span>
+        {# class pour css, id pour js #}
+        <img class="modal-content" id="modal-image">
+    </div>
+
 {% endblock %}
 

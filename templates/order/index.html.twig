@@ -20,9 +20,10 @@
                 </li>
             {% endfor %}
         </ul>
-        <form method="post" action="{{ path('cart_validate') }}">
+        {# <form method="post" action="{{ path('summary') }}">
             <input type="hidden" name="_token" value="{{ csrf_token('validate_cart') }}">
-            <button class="btn btn-success">Valider le panier</button>
+            <button class="btn btn-success">Valider le panier</button> #}
+            <a href="{{ path('summary') }}">Valider le panier</a>
         </form>
     {% endif %}
 

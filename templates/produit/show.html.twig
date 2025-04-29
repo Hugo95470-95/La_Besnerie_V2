@@ -15,9 +15,9 @@
     {% if produit.imageMain %}
         <img src="{{ asset('uploads/images/' ~ produit.imageMain) }}" alt="{{ produit.name }}">
     {% endif %}
-    {% if produit.imageSupp %}
+    {# {% if produit.imageSupp %}
         <img src="{{ asset('uploads/images/' ~ produit.imageSupp) }}" alt="{{ produit.name }}">
-    {% endif %}
+    {% endif %} #}
     <a href="{{ path('produit') }}">Retour à la liste des produits</a>
 
     <form method="post" action="{{ path('cart_add', {id: produit.id}) }}">

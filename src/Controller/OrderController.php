@@ -73,4 +73,15 @@ final class OrderController extends AbstractController
     {
         return $this->render('order/confirmation.html.twig');
     }
+
+    #[Route('/cart/summary', name: 'summary')]
+    public function summary(Request $request, SessionInterface $session): Response
+    {
+        $cart = $session->get('cart', []);
+
+        return $this->render('order/summary.html.twig', [
+            'cart' => $cart,
+        ]);
+
+    }
 }
