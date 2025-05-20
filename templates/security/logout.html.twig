@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déconnexion</title>
+    <link rel="stylesheet" href="{{ asset('styles/appAccueil.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ asset('images/pancarte_besnerie_V2_resultat.webp') }}" alt="Pancarte de la Besnerie">
+    </header>
+
+    <div class="color-band"></div>
+
+    <div class="text_body">
+        <h1 style="font-size: 2rem; text-align: center; margin-bottom: 10px;">Déconnexion réussie</h1>        <p>{{ message }}</p>
+        <a href="{{ path('accueil') }}" class="btn" style="
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #black;
+            background-color:rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        ">Retour à l'accueil</a>
+    </div>
+
+    <footer>
+        <img src="{{ asset('images/footer_besnerie_resultat.webp') }}" alt="Bannière de la Besnerie">
+        <p>La Besnerie, 72340 Chahaignes</p>
+    </footer>
+</body>
+</html>

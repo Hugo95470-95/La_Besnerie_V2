@@ -1,3 +1,47 @@
-img {
-    width: 10%;
+/* body .product_list ul img {
+    max-width: 100px;
+    max-height: 100px;
+} */
+
+.product-details {
+    background-color: #f9f9f9; /* Fond clair pour mettre en avant */
+    border: 1px solid #ddd; /* Bordure légère */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+    max-width: 600px; /* Largeur maximale */
+    margin: 20px auto; /* Centrer le bloc */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    text-align: center; /* Centrer le contenu */
+}
+
+.product-details h1 {
+    font-size: 2rem; /* Taille du titre */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 15px; /* Espacement sous le titre */
+}
+
+.product-description {
+    font-size: 1.2rem; /* Taille du texte */
+    color: #555; /* Couleur du texte */
+    margin-bottom: 10px; /* Espacement sous la description */
+}
+
+.product-price {
+    font-size: 1.5rem; /* Taille du prix */
+    color: #007BFF; /* Couleur bleue pour le prix */
+    font-weight: bold; /* Mettre en gras */
+    margin-bottom: 10px; /* Espacement sous le prix */
+}
+
+.product-category {
+    font-size: 1rem; /* Taille de la catégorie */
+    color: #666; /* Couleur grise pour la catégorie */
+    margin-bottom: 20px; /* Espacement sous la catégorie */
+}
+
+.product-image {
+    max-width: 100%; /* Image responsive */
+    height: auto; /* Conserver les proportions */
+    border-radius: 10px; /* Coins arrondis pour l'image */
+    margin-top: 15px; /* Espacement au-dessus de l'image */
 }

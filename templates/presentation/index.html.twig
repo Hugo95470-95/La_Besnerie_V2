@@ -1,5 +1,3 @@
-
-
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/appPresentation.css') }}">
@@ -16,37 +14,61 @@
         <li><a href="{{ path('media') }}">Media</a></li>
         <li><a href="{{ path('produit') }}">Boutique</a></li>
         <li><a href="{{ path('contact') }}">Contact</a></li>
+        <li><a href="{{ path('app_login') }}">Connexion</a></li>
+        <li><a href="{{ path('register') }}">S'enregistrer</a></li>
     </ul>
 
     <div class="color-band"></div>
 
     <div class="text_body">  
+        <h2>Présentation de la Ferme de La Besnerie</h2>
         <p>
-            La Ferme de La Besnerie est une exploitation agricole de polyculture - élevage situé à Chahaignes en Sarthe (72)
-            La Ferme de la Besnerie est une exploitation agricole familiale qui a été repris en novembre 2023 par Mr CAFFIN et Mme SAUTREAU
+            La Ferme de La Besnerie est une exploitation agricole familiale située à Chahaignes, dans le département de la Sarthe (72). Elle pratique une activité de polyculture-élevage, alliant élevage bovin, caprin, volailles, et cultures céréalières.
+        </p>
 
-            L’exploitation élève des bovins allaitants de la race Charolaise
-            Les bovins sont nourris avec des céréales produites sur l’exploitation et du fourrages frais ou en enrubanner composée d'herbe, de luzerne et de trèfle
-            Les bovins sont élevés en plein air et sont emmenés en pâture dès que la météo le permet
+        <h2>🌾 Historique et gestion</h2>
+        <p>
+            Reprise en novembre 2023 par Monsieur CAFFIN et Madame SAUTREAU, la ferme perpétue un savoir-faire traditionnel tout en intégrant une vision moderne et durable de l’agriculture.
+        </p>
 
+        <h2>🐄 Élevage bovin (race Charolaise)</h2>
+        <ul>
+            <li>Des céréales produites sur l’exploitation</li>
+            <li>Du fourrage, frais ou enrubanné, composé d’herbe, de luzerne et de trèfle</li>
+        </ul>
+        <p>
+            Les animaux sont élevés en plein air, avec un accès aux pâturages dès que les conditions météorologiques le permettent.
+        </p>
 
-            Les chèvres laitières sont de la race Alpines. Certains boucs de la ferme provienne de la Chèvrerie de la Croix Verte situé à Nesploy dans le Loiret
-            Les chèvres sont traite 2 fois par jours le soir ainsi le matin et en monotraite en hiver lorsque la production de lait commence à diminuer
-            Le lait produit est transformé en fromage de chèvre frais, crémeux, demi-sec, sec, cendré, aromatisé, en faisselle, en yaourt et en fromage blanc. Du lait de chèvre cru peut également être vendu
+        <h2>🐐 Élevage caprin (race Alpine)</h2>
+        <p>
+            Le troupeau caprin est composé de chèvres Alpines, dont certains boucs proviennent de la Chèvrerie de la Croix Verte à Nesploy (Loiret). Les chèvres sont traites deux fois par jour (matin et soir), puis en monotraite durant l’hiver lorsque la production diminue.
+        </p>
 
-            La mise en reproduction des chèvres à lieu en autonme suivi de la gestation pour une mise bas de janvier à mars
-            Lors de la gestation, les chèvres ont un régime alimentaire adapté pour leurs besoins afin de faciliter les mise bas
-            La majorité du cheptel est inséminé afin d'améliorer la génétique du troupeau et ainsi éviter le consanguinité
-            Les chevreaux sont élevés au biberon et sont nourris avec du lait de chèvre en poudre
-            Lorsque les chevreaux atteindront le stade de chevrette, elles devront avoir une 1ère naissance pour qu'elles devienne primipare et ainsi avoir leur première production de lait
+        <h2>🧀 Transformation fromagère</h2>
+        <ul>
+            <li>Fromages de chèvre : frais, crémeux, demi-sec, sec, cendré, aromatisé</li>
+            <li>Produits laitiers : faisselle, yaourt, fromage blanc</li>
+            <li>Vente de lait cru de chèvre également possible</li>
+        </ul>
 
+        <h2>🔁 Reproduction & élevage</h2>
+        <p>
+            La mise en reproduction des chèvres a lieu à l’automne. Les mises bas s’échelonnent de janvier à mars. Durant la gestation, les chèvres bénéficient d’une alimentation adaptée.
+        </p>
 
-            Des volailles fermiers pour la marque Loué
-            Les volailles sont élevées en plein air et sont nourris avec des céréales produites sur l’exploitation
+        <h2>🐓 Élevage de volailles (Label Loué)</h2>
+        <p>
+            L’exploitation élève également des volailles fermières sous la marque Loué, en plein air. Elles sont nourries exclusivement avec des céréales produites sur la ferme.
+        </p>
 
-            L’exploitation cultives également des céréales tel que du blé, de l'orge, de l'escourgeon, du colza, du maïs ou du tournesol sur une surface de 200 hectares
-            Il y a également 50 hectares de prairies pour les animaux et pour cultiver de la luzerne
-            
+        <h2>🌱 Productions végétales</h2>
+        <ul>
+            <li>Céréales : blé, orge, escourgeon</li>
+            <li>Oléagineux : colza, tournesol, maïs</li>
+        </ul>
+        <p>
+            À cela s’ajoutent 50 hectares de prairies naturelles destinés à l’alimentation du bétail et à la culture de luzerne.
         </p>
     </div>
     

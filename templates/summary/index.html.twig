@@ -3,6 +3,19 @@
 {% block title %}Confirmation de commande{% endblock %}
 
 {% block body %}
+
+    <ul>
+        <li><a href="{{ path('accueil') }}">Accueil</a></li>
+        <li><a href="{{ path('presentation') }}">Presentation</a></li>
+        <li><a href="{{ path('media') }}">Media</a></li>
+        <li><a href="{{ path('produit') }}">Boutique</a></li>
+        <li><a href="{{ path('contact') }}">Contact</a></li>
+        <li><a href="{{ path('app_login') }}">Connexion</a></li>
+        <li><a href="{{ path('register') }}">S'enregistrer</a></li>
+    </ul>
+
+    <div class="color-band"></div>
+
     <h1>Merci pour votre commande !</h1>
     <p>Votre commande a été validée avec succès.</p>
     <a href="{{ path('produit_index') }}">Retour à la liste des produits</a>

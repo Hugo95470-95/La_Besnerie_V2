@@ -4,11 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Entity\Product;
-use App\Entity\Produit;
-use App\Entity\Categorie;
-use App\Entity\Commentaire;
-use App\Entity\Utilisateur;
-use App\Entity\Personnalisation;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -33,15 +28,19 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'produit_index');
+        yield MenuItem::linktoRoute('Retour sur la page d"accueil', 'fas fa-home', 'accueil');
         // // Relier les CRUDs
         yield MenuItem::linkToCrud('produits', 'fas fa-list', Product::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', User::class);
-
+        yield MenuItem::linkToLogout('Déconnexion', 'fas fa-sign-out-alt', 'logout');
     }
 }
 
 
-// identifiant admin
+// Identifiant Admin
 // hcaffin@gmail.com
 // azerty
+
+// Identifiant Client
+// caffinh.dev.web@gmail.com
+// 3333

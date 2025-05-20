@@ -40,11 +40,20 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class LoginController extends AbstractController
 {
-    #[Route('/login', name: 'app_login')]
-    public function index(): Response
-    {
-        return $this->render('login/index.html.twig', [
-            'controller_name' => 'LoginController',
-        ]);
-    }
+    // #[Route('/login', name: 'app_login')]
+    // public function index(): Response
+    // {
+    //     return $this->render('login/index.html.twig', [
+    //         'controller_name' => 'LoginController',
+    //     ]);
+    // }
+
+//    #[Route('/logout', name: 'app_logout')]
+//         public function logout(): void
+//         {
+//             throw new \Exception('Cette méthode peut être vide - elle sera interceptée par la clé de déconnexion de votre pare-feu.');
+//         }
 }
+
+
+// symfony console make:security:form-login

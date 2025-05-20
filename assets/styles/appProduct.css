@@ -1,5 +1,49 @@
+/* Liste des produits */
 body .product_list {
     display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+    flex-direction: column; /* Affiche les produits en colonne */
+    justify-content: center; /* Centre les produits verticalement */
+    align-items: center; /* Centre les produits horizontalement */
+    gap: 20px; /* Espacement entre les produits */
+    margin: 20px 0;
+    font-weight: bolder;
+    font-size: 2rem; /* Taille de police pour les titres des produits */
+}
+
+body .product_list ul img {
+    max-width: 150px; /* Taille par défaut des images */
+    max-height: 150px;
+    border-radius: 10px; /* Coins arrondis pour les images */
+    transition: transform 0.3s ease; /* Animation au survol */
+}
+
+body .product_list ul img:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'image au survol */
+}
+
+/* Media queries pour les écrans plus petits */
+@media (max-width: 768px) {
+    body .product_list {
+        flex-direction: column; /* Les produits s'affichent en colonne sur tablette */
+        align-items: center; /* Centre les produits */
+    }
+
+    body .product_list ul img {
+        max-width: 120px; /* Réduit la taille des images pour les tablettes */
+        max-height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    body .product_list {
+        flex-direction: column; /* Les produits restent en colonne sur mobile */
+        align-items: center; /* Centre les produits */
+        gap: 15px; /* Réduit l'espacement entre les produits */
+    }
+
+    body .product_list ul img {
+        max-width: 100px; /* Réduction supplémentaire pour les petits écrans */
+        max-height: 100px;
+    }
 }

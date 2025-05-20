@@ -15,4 +15,10 @@ final class UserCrudController extends AbstractController
             'controller_name' => 'UserCrudController',
         ]);
     }
+
+    // #[Route('/logout', name: 'app_logout')]
+    // public function logout(): void
+    //     {
+    //         throw new \LogicException('Intercepté par le firewall.');
+    //     }
 }

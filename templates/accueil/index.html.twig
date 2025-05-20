@@ -1,36 +1,58 @@
-
-
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %} #}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/appAccueil.css') }}">
 {% endblock %}
 
-{% block title %}La Besnerie{% endblock %}
+{# {% block title %}La Besnerie{% endblock %} #}
 
-
-
-{% block body %}
+<body>
+    <header>
+        <img src="{{ asset('images/pancarte_besnerie_V2_resultat.webp') }}" alt="pancarte">
+    </header>
     
-    {# <h1>La Ferme de la Besnerie</h1> #}
+    {% block body %}
+        <ul>
+            <li><a href="{{ path('presentation') }}">Presentation</a></li>
+            <li><a href="{{ path('media') }}">Media</a></li>
+            <li><a href="{{ path('produit') }}">Boutique</a></li>
+            <li><a href="{{ path('contact') }}">Contact</a></li>
+            {% if not app.user %}
+                <li><a href="{{ path('register') }}">S'enregistrer</a></li>
+            {% endif %}
+            {% if not app.user %}
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            {% endif %}
+            {% if app.user %}
+                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+            {% endif %}
+            {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+                <li><a href="{{ path('admin') }}" class="btn">Dashboard</a></li>
+            {% endif %}
+        </ul>
 
-    <ul>
-        <li><a href="{{ path('presentation') }}">Presentation</a></li>
-        <li><a href="{{ path('media') }}">Media</a></li>
-        <li><a href="{{ path('produit') }}">Boutique</a></li>
-        <li><a href="{{ path('contact') }}">Contact</a></li>
-        <li><a href="{{ path('app_login') }}">Connexion</a></li>
-        <li><a href="{{ path('register') }}">S'enregistrer</a></li>
-    </ul>
+        <div class="color-band"></div>
 
-    <div class="color-band"></div>
+        <div class="text_body">
+            <p>Bienvenue sur le site de la Ferme de la Besnerie !</p>
 
-    <div class="text_body">
-        <p>Bienvenue sur le site de la Ferme de la Besnerie !</p>
+            <p>
+                Exploitation agricole de polyculture - élevage <br>
+                situé à Chahaignes en Sarthe (72)
+            </p>
+        </div>
+    {% endblock %}
 
-        <p>
-            Exploitation agricole de polyculture - élevage <br>
-            situé à Chahaignes en Sarthe (72)
-        </p>
+    <footer>
+    <div class="footer-img-container">
+        <img src="{{ asset('images/footer_besnerie_resultat.webp') }}" alt="banniere">
+        <div class="footer-content">
+            <p>La Besnerie, 72340 Chahaignes</p>
+            <ul>
+                <li><a href="{{ path('cgv') }}">Conditions générales Utilisation</a></li>
+                <li><a href="{{ path('confidentialite') }}">Politique de confidentialité</a></li>
+                <li><a href="{{ path('mention') }}">Mentions légales</a></li>
+            </ul>
+        </div>
     </div>
-    
-{% endblock %}
+</footer>
+</body>

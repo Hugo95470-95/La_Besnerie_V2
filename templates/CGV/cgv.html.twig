@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conditions Générales d'Utilisation (CGU){% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/appAccueil.css') }}">
+    <style>
+        h1 { color: #2d2d2d; font-size: 1.5rem; }
+        h2 { color: #2d2d2d; font-size: 1.1rem; }
+        .text_body {
+            background: #fff;
+            border-radius: 10px;
+            padding: 2em;
+            margin: 2em auto;
+            max-width: 900px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <ul>
+        <li><a href="{{ path('accueil') }}">Accueil</a></li>
+        <li><a href="{{ path('presentation') }}">Presentation</a></li>
+        <li><a href="{{ path('media') }}">Media</a></li>
+        <li><a href="{{ path('produit') }}">Boutique</a></li>
+        <li><a href="{{ path('contact') }}">Contact</a></li>
+        <li><a href="{{ path('register') }}">S'enregistrer</a></li>
+        <li><a href="{{ path('app_login') }}">Connexion</a></li>
+        <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+    </ul>
+
+    <div class="color-band"></div>
+
+    <div class="text_body">
+        <h1>Conditions Générales d'Utilisation (CGU)</h1>
+
+        <h2>1. Objet</h2>
+        <p>
+            Les présentes Conditions Générales d'Utilisation (ci-après les "CGU") ont pour objet de définir les modalités d’accès et d’utilisation du site [Nom du site] accessible à l’adresse : [URL du site].
+        </p>
+
+        <h2>2. Acceptation des conditions</h2>
+        <p>
+            En accédant au site ou en l'utilisant, l’utilisateur accepte pleinement et entièrement les présentes CGU.
+            Si l’utilisateur n’accepte pas tout ou partie des conditions énoncées ci-dessous, il doit renoncer à toute utilisation du site.
+        </p>
+
+        <h2>3. Accès au site</h2>
+        <p>
+            Le site est accessible gratuitement à tout utilisateur disposant d’un accès à Internet. Tous les coûts relatifs à l'accès au service (matériel, logiciels, connexion Internet, etc.) sont à la charge de l’utilisateur.
+        </p>
+
+        <h2>4. Compte utilisateur</h2>
+        <p>
+            Pour commander sur le site, l’utilisateur peut être amené à créer un compte. Il s'engage à fournir des informations exactes, à jour et complètes.
+            Il est responsable de la confidentialité de ses identifiants et mots de passe.
+        </p>
+
+        <h2>5. Propriété intellectuelle</h2>
+        <p>
+            L'ensemble des éléments du site (textes, images, logos, structure, code, etc.) est protégé par le droit d’auteur et reste la propriété exclusive de l’éditeur du site.
+            Toute reproduction ou exploitation sans autorisation est interdite.
+        </p>
+
+        <h2>6. Données personnelles</h2>
+        <p>
+            Les données collectées sont traitées dans le respect de la législation applicable. Pour plus d'informations, veuillez consulter notre
+            <a href="[URL des mentions légales ou politique de confidentialité]">Politique de confidentialité</a>.
+        </p>
+
+        <h2>7. Responsabilité</h2>
+        <p>
+            Le site met tout en œuvre pour fournir des informations fiables, mais ne peut garantir l’absence totale d’erreurs. L'utilisateur est seul responsable de l'utilisation qu'il fait du site.
+        </p>
+
+        <h2>8. Liens externes</h2>
+        <p>
+            Le site peut contenir des liens vers des sites tiers. L’éditeur du site décline toute responsabilité quant au contenu de ces sites.
+        </p>
+
+        <h2>9. Modifications</h2>
+        <p>
+            Le site se réserve le droit de modifier à tout moment les présentes CGU. Les utilisateurs seront informés par publication sur le site.
+        </p>
+
+        <h2>10. Droit applicable</h2>
+        <p>
+            Les présentes CGU sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.
+        </p>
+    </div>
+{% endblock %}

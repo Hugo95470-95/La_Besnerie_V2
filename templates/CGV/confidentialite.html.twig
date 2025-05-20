@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Politique de confidentialité{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/appAccueil.css') }}">
+    <style>
+        h1 { color: #2d2d2d; font-size: 1.5rem; }
+        h2 { color: #2d2d2d; font-size: 1.1rem; }
+        .text_body {
+            background: #fff;
+            border-radius: 10px;
+            padding: 2em;
+            margin: 2em auto;
+            max-width: 900px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <ul>
+        <li><a href="{{ path('accueil') }}">Accueil</a></li>
+        <li><a href="{{ path('presentation') }}">Presentation</a></li>
+        <li><a href="{{ path('media') }}">Media</a></li>
+        <li><a href="{{ path('produit') }}">Boutique</a></li>
+        <li><a href="{{ path('contact') }}">Contact</a></li>
+        <li><a href="{{ path('register') }}">S'enregistrer</a></li>
+        <li><a href="{{ path('app_login') }}">Connexion</a></li>
+        <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+    </ul>
+
+    <div class="color-band"></div>
+    
+    <div class="text_body">
+        <h1>Politique de confidentialité</h1>
+
+        <h2>Éditeur du site</h2>
+        <p>
+            Raison sociale : La Ferme de la Besnerie<br>
+            Forme juridique : [Ex : SARL, SASU, micro-entreprise, etc.]<br>
+            Siège social : [Adresse postale complète]<br>
+            Téléphone : [Numéro de téléphone]<br>
+            Email : [Adresse e-mail de contact]<br>
+            Numéro SIRET : [Votre SIRET]<br>
+            Directeur de la publication : [Nom du responsable légal]
+        </p>
+
+        <h2>Hébergement</h2>
+        <p>
+            Hébergeur : [Nom de l'hébergeur, ex : OVH, Infomaniak, etc.]<br>
+            Adresse : [Adresse de l’hébergeur]<br>
+            Téléphone : [Numéro de l’hébergeur]<br>
+            Site web : [URL]
+        </p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>
+            Tous les contenus présents sur le site (textes, images, logo, etc.) sont protégés par le droit d’auteur.
+            Toute reproduction, totale ou partielle, est interdite sans autorisation préalable.
+        </p>
+
+        <h2>Conditions d’utilisation</h2>
+        <p>
+            L’utilisation de ce site implique l’acceptation pleine et entière des conditions générales d’utilisation décrites dans nos CGU/CGV.
+        </p>
+
+        <h2>Protection des données personnelles</h2>
+        <p>
+            Conformément à la loi Informatique et Libertés et au RGPD, vous disposez d’un droit d’accès, de rectification, de suppression et d’opposition concernant vos données personnelles.<br>
+            Pour exercer ces droits, contactez-nous à : [adresse email de contact RGPD]
+        </p>
+
+        <h2>Cookies</h2>
+        <p>
+            Le site peut utiliser des cookies pour améliorer l’expérience utilisateur. Vous pouvez configurer votre navigateur pour refuser les cookies.
+        </p>
+
+        <h2>Litiges</h2>
+        <p>
+            En cas de litige, une solution amiable sera recherchée avant toute action judiciaire. Le droit applicable est le droit français.
+        </p>
+    </div>
+{% endblock %}

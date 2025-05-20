@@ -1,9 +1,132 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FF7700; /* Couleur de fond provenant de appBase.css */
+    color: #333;
+}
 
-body .text_body{
+/* Header */
+header img {
+    width: -webkit-fill-available;
+    height: 500px;
+}
+
+/* Navigation */
+body ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+body ul li {
+    list-style-type: none;
+}
+
+body ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+/* Bande de couleur */
+body .color-band {
+    background-color: #000000;
+    height: 3px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+/* Section principale */
+body .text_body {
+    margin: 50px auto; /* Centrer verticalement avec auto */
+    max-width: 90%; /* Limiter la largeur pour les petits écrans */
+    text-align: center;
     font-size: xxx-large;
-    margin: 100px 0 100px 0;
+    background: #fff; /* Ajout d'un fond blanc pour contraster */
+    padding: 20px; /* Ajout de padding pour un meilleur espacement */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
 body p {
     text-align: center;
+    font-size: 1rem; /* Taille de police relative */
+    line-height: 1.5; /* Amélioration de la lisibilité */
+    margin: 10px 0;
+}
+
+/* Footer */
+footer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer-img-container {
+    position: relative;
+    width: 100%;
+    height: 500px; /* même hauteur que ton image */
+}
+
+.footer-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+    display: block;
+}
+
+.footer-content {
+    position: absolute;
+    top: 40%; /* ajuste selon le rendu souhaité */
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.footer-content p {
+    font-size: xx-large;
+    margin: 0 0 1em 0;
+    color: #fff;
+}
+
+.footer-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5em;
+    justify-content: center;
+}
+
+.footer-content ul li a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 1.1em;
+}
+
+/* Media queries pour les écrans plus petits */
+@media (max-width: 768px) {
+    body .text_body {
+        font-size: 1.5rem; /* Réduction de la taille de la police */
+        margin: 30px auto;
+    }
+
+    body p {
+        font-size: 0.9rem; /* Réduction de la taille de la police */
+    }
+}
+
+@media (max-width: 480px) {
+    body .text_body {
+        font-size: 1.2rem; /* Réduction supplémentaire pour les très petits écrans */
+        margin: 20px auto;
+    }
+
+    body p {
+        font-size: 0.8rem; /* Ajustement pour les petits écrans */
+    }
 }

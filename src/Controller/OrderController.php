@@ -22,7 +22,17 @@ final class OrderController extends AbstractController
     }
 
     #[Route('/cart/add/{id}', name: 'cart_add', methods: ['POST'])]
-    public function add(Product $product, SessionInterface $session): Response
+    public function add(Product $product, Request $request, SessionInterface $session): Response
+    {
+        $quantite = (int) $request->request->get('quantite', 1);
+
+        $this->ajouterAuPanier($product, $quantite, $session);
+
+        return $this->redirectToRoute('cart_index');
+    }
+
+    // Ajoute cette méthode privée dans le contrôleur
+    private function ajouterAuPanier(Product $product, int $quantite, SessionInterface $session): void
     {
         $cart = $session->get('cart', []);
         $id = $product->getId();
@@ -30,15 +40,30 @@ final class OrderController extends AbstractController
         if (!isset($cart[$id])) {
             $cart[$id] = [
                 'product' => $product,
-                'quantity' => 1
+                'quantity' => $quantite
             ];
         } else {
-            $cart[$id]['quantity']++;
+            $cart[$id]['quantity'] += $quantite;
         }
 
         $session->set('cart', $cart);
+    }
 
-        // Rediriger vers le panier après l'ajout
+    #[Route('/cart/remove-quantity/{id}', name: 'cart_remove_quantity', methods: ['POST'])]
+    public function removeQuantity(Product $product, Request $request, SessionInterface $session): Response
+    {
+        $quantite = (int) $request->request->get('quantite', 1);
+        $cart = $session->get('cart', []);
+        $id = $product->getId();
+
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity'] -= $quantite;
+            if ($cart[$id]['quantity'] <= 0) {
+                unset($cart[$id]);
+            }
+            $session->set('cart', $cart);
+        }
+
         return $this->redirectToRoute('cart_index');
     }
 

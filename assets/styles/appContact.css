@@ -9,3 +9,53 @@
     height: 450px;
     border: 0;
 }
+
+.body_contact h1 {
+    font-size: 2rem; /* Taille du titre */
+    color: #333; /* Couleur du texte */
+    text-align: center; /* Centrer le titre */
+    margin-bottom: 10px; /* Espacement sous le titre */
+}
+
+.body_contact p {
+    font-size: 1.2rem; /* Taille du texte */
+    color: #555; /* Couleur du texte */
+    text-align: center; /* Centrer le texte */
+    margin: 0; /* Supprime les marges par défaut */
+}
+
+.body_contact p a {
+    color: #007BFF; /* Couleur du lien */
+    font-weight: bold; /* Met le lien en gras */
+    text-decoration: none; /* Supprime le soulignement */
+    transition: color 0.3s ease; /* Animation pour le survol */
+}
+
+.body_contact p a:hover {
+    color: #0056b3; /* Couleur du lien au survol */
+}
+
+.body_contact {
+    background-color: #f9f9f9; /* Fond clair */
+    border: 1px solid #ddd; /* Bordure légère */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+    max-width: 600px; /* Largeur maximale */
+    margin: 20px auto; /* Centrer horizontalement */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+/* Media queries pour les écrans plus petits */
+@media (max-width: 768px) {
+    .body_contact .maps iframe {
+        width: 90%; /* La carte occupe 90% de la largeur de l'écran */
+        height: 350px; /* Réduction de la hauteur pour les tablettes */
+    }
+}
+
+@media (max-width: 480px) {
+    .body_contact .maps iframe {
+        width: 100%; /* La carte occupe toute la largeur de l'écran */
+        height: 300px; /* Réduction supplémentaire de la hauteur pour les smartphones */
+    }
+}

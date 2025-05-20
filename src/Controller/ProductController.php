@@ -156,23 +156,6 @@ class ProductController extends AbstractController
                 $produit->setImageMain($newFilename);
             }
 
-            // if ($imageSuppFile) {
-            //     $originalFilename = pathinfo($imageSuppFile->getClientOriginalName(), PATHINFO_FILENAME);
-            //     $safeFilename = $slugger->slug($originalFilename);
-            //     $newFilename = $safeFilename.'-'.uniqid().'.'.$imageSuppFile->guessExtension();
-
-            //     try {
-            //         $imageSuppFile->move(
-            //             $this->getParameter('images_directory'),
-            //             $newFilename
-            //         );
-            //     } catch (FileException $e) {
-            //         // handle exception if something happens during file upload
-            //     }
-
-            //     $produit->setImageSupp($newFilename);
-            // }
-
             $entityManager->persist($produit);
             $entityManager->flush();
 
@@ -192,30 +175,22 @@ class ProductController extends AbstractController
         ]);
     }
 
-    // #[Route('/produit/{id}/delete', name: 'produit_delete', methods: ['POST'])]
-    // public function delete(Request $request, Product $produit, EntityManagerInterface $entityManager): Response
-    // {
-    //     if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
-    //         $entityManager->remove($produit);
-    //         $entityManager->flush();
-    //     }
-
-    //     return $this->redirectToRoute('produit');
-    // }
-
     #[Route('/produit/{id}/order', name: 'order', methods: ['POST'])]
-    public function addToCart(Product $produit, SessionInterface $session): Response
+    public function addToCart(Request $request, Product $produit, SessionInterface $session): Response
     {
         $cart = $session->get('cart', []);
         $id = $produit->getId();
 
+        // Récupère la quantité depuis le formulaire, par défaut 1
+        $quantite = (int) $request->request->get('quantite', 1);
+
         if (!isset($cart[$id])) {
             $cart[$id] = [
                 'product' => $produit,
-                'quantity' => 1
+                'quantity' => $quantite
             ];
         } else {
-            $cart[$id]['quantity']++;
+            $cart[$id]['quantity'] += $quantite;
         }
 
         $session->set('cart', $cart);

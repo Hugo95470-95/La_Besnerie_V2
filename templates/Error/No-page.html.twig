@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page non trouvée{% endblock %}
+
+{% block body %}
+    <div style="text-align:center; margin-top: 5em;">
+        <h1>404 - Page non trouvée</h1>
+        <p>Désolé, la page que vous cherchez n'existe pas ou a été déplacée.</p>
+        <a href="{{ path('accueil') }}" class="btn">Retour à l'accueil</a>
+    </div>
+{% endblock %}

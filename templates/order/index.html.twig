@@ -13,6 +13,12 @@
                 <li>
                     <img src="{{ asset('uploads/images/' ~ item.product.imageMain) }}" alt="{{ item.product.name }}" style="max-width: 100px; max-height: 100px;">
                     {{ item.product.name }} - {{ item.product.price }} € x {{ item.quantity }}
+
+                    <form method="post" action="{{ path('cart_remove_quantity', {'id': item.product.id}) }}" style="display:inline;">
+                        <input type="number" name="quantite" value="1" min="1" max="{{ item.quantity }}" style="width: 60px;">
+                        <button type="submit" class="btn btn-warning">Retirer</button>
+                    </form>
+
                     <form method="post" action="{{ path('cart_remove', {id: item.product.id}) }}" style="display:inline;">
                         <input type="hidden" name="_token" value="{{ csrf_token('remove' ~ item.product.id) }}">
                         <button class="btn btn-danger">Supprimer</button>
@@ -20,12 +26,33 @@
                 </li>
             {% endfor %}
         </ul>
-        {# <form method="post" action="{{ path('summary') }}">
-            <input type="hidden" name="_token" value="{{ csrf_token('validate_cart') }}">
-            <button class="btn btn-success">Valider le panier</button> #}
-            <a href="{{ path('summary') }}">Valider le panier</a>
-        </form>
+            <a href="{{ path('summary') }}" style="
+                display: inline-block;
+                padding: 7px 7px;
+                font-size: 1rem;
+                font-weight: bold;
+                color: #black;
+                background-color:rgb(255, 255, 255);
+                border: none;
+                border-radius: 5px;
+                text-decoration: none;
+                text-align: center;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            ">Valider le panier</a>
+            {# </form> #}
     {% endif %}
 
-    <a href="{{ path('produit') }}">Continuer vos achats</a>
-{% endblock %}
+        <a href="{{ path('produit') }}" style="
+            display: inline-block;
+            padding: 7px 7px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #black;
+            background-color:rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        ">Continuer vos achats</a>
+    {% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur serveur{% endblock %}
+
+{% block body %}
+    <div style="text-align:center; margin-top: 5em;">
+        <h1>500 - Erreur serveur</h1>
+        <p>Une erreur interne est survenue. Veuillez réessayer plus tard.</p>
+        <a href="{{ path('accueil') }}" class="btn">Retour à l'accueil</a>
+    </div>
+{% endblock %}

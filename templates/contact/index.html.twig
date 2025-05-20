@@ -17,6 +17,8 @@
         <li><a href="{{ path('presentation') }}">Presentation</a></li>
         <li><a href="{{ path('media') }}">Media</a></li>
         <li><a href="{{ path('produit') }}">Boutique</a></li>
+        <li><a href="{{ path('app_login') }}">Connexion</a></li>
+        <li><a href="{{ path('register') }}">S'enregistrer</a></li>
     </ul>
 
     <div class="color-band"></div>
@@ -34,19 +36,21 @@
 
 
     <h1>Contactez-nous</h1>
+    <p>📧 Adresse e-mail : <a href="mailto:contact@besnerie.fr">contact@besnerie.fr</a></p>
 
-        {% for message in app.flashes('success') %}
+
+        {# {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }}
             </div>
-        {% endfor %}
+        {% endfor %} #}
 
-        {{ form_start(form) }}
+        {# {{ form_start(form) }}
             {{ form_row(form.name) }}
             {{ form_row(form.email) }}
             {{ form_row(form.message) }}
             {{ form_row(form.send) }}
-        {{ form_end(form) }}
+        {{ form_end(form) }} #}
         
     </div>
     

@@ -2,8 +2,14 @@ _security_logout:
     resource: security.route_loader.logout
     type: service
 
+# security:
+#     firewalls:
+#         main:
+#             form_login:
+#                 login_path: app_login
+#                 check_path: app_login
+#                 default_target_path: app_dashboard # Redirection par défaut après connexion
+#                 always_use_default_target_path: false # Permet de rediriger selon le rôle
 
-
-
-
-
+#     access_control:
+#         - { path: ^/admin, roles: ROLE_ADMIN }

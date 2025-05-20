@@ -1,8 +1,4 @@
 
-
-
-
-
 {# {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/appAccueil.css') }}">
@@ -64,6 +60,8 @@
         <li><a href="{{ path('presentation') }}">Presentation</a></li>
         <li><a href="{{ path('media') }}">Media</a></li>
         <li><a href="{{ path('contact') }}">Contact</a></li>
+        <li><a href="{{ path('app_login') }}">Connexion</a></li>
+        <li><a href="{{ path('register') }}">S'enregistrer</a></li>
     </ul>
 
     <div class="color-band"></div>
@@ -74,25 +72,11 @@
         {% for produit in produits %}
             <li class="product_list">
                 {% if produit.imageMain %}
-                    <img src="{{ asset('uploads/images/' ~ produit.imageMain) }}" alt="{{ produit.name }}" style="max-width: 100px; max-height: 100px;">
-                {% endif %}
+                <img src="{{ asset('uploads/images/' ~ produit.imageMain) }}" alt="{{ produit.name }}" width="200" height="200">                {% endif %}
                 <a href="{{ path('produit_show', {'id': produit.id}) }}">{{ produit.name }}</a>
                 {{ produit.price }} €
                 
             </li>
         {% endfor %}
     </ul>
-
-    {# <ul>
-        {% for produit in produits %}
-            <li>
-                <a href="{{ path('produit_show', {id: produit.id}) }}">{{ produit.name }}</a>
-                <form method="post" action="{{ path('produit_delete', {id: produit.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
-                    <button class="btn btn-danger">Supprimer</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul> #}
-
 {% endblock %}
