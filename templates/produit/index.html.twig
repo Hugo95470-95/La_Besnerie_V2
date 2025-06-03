@@ -62,6 +62,7 @@
         <li><a href="{{ path('contact') }}">Contact</a></li>
         <li><a href="{{ path('app_login') }}">Connexion</a></li>
         <li><a href="{{ path('register') }}">S'enregistrer</a></li>
+        <li><a href="{{ path('cart_index') }}" class="btn btn-primary">Voir mon panier</a></li>
     </ul>
 
     <div class="color-band"></div>
@@ -72,7 +73,7 @@
         {% for produit in produits %}
             <li class="product_list">
                 {% if produit.imageMain %}
-                <img src="{{ asset('uploads/images/' ~ produit.imageMain) }}" alt="{{ produit.name }}" width="200" height="200">                {% endif %}
+                <img src="{{ asset('uploads/images/' ~ produit.imageMain) }}" alt="{{ produit.name }}" width="200" height="200">{% endif %}
                 <a href="{{ path('produit_show', {'id': produit.id}) }}">{{ produit.name }}</a>
                 {{ produit.price }} €
                 

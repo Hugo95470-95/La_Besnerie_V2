@@ -15,8 +15,6 @@ class AccueilController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
 
     {
-
-
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
         ]);
