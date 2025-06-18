@@ -5,6 +5,10 @@
 {% block body %}
     <h1>Mon Panier</h1>
 
+    {# Affichage du total du panier #}
+    <p><strong>Nombre total de produits dans le panier : {{ totalProduits }}</strong></p>
+    <p><strong>Prix total du panier : {{ totalPrix|number_format(2, ',', ' ') }} €</strong></p>
+    
     {% if cart is empty %}
         <p>Votre panier est vide.</p>
     {% else %}
@@ -23,6 +27,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token('remove' ~ item.product.id) }}">
                         <button class="btn btn-danger">Supprimer</button>
                     </form>
+
                 </li>
             {% endfor %}
         </ul>
@@ -39,7 +44,6 @@
                 text-align: center;
                 transition: background-color 0.3s ease, transform 0.2s ease;
             ">Valider le panier</a>
-            {# </form> #}
     {% endif %}
 
         <a href="{{ path('produit') }}" style="

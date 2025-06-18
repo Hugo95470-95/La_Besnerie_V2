@@ -51,7 +51,7 @@ body .text_body {
 
 body p {
     text-align: center;
-    font-size: 1rem; /* Taille de police relative */
+    font-size: 1.5rem; /* Taille de police relative */
     line-height: 1.5; /* Amélioration de la lisibilité */
     margin: 10px 0;
 }

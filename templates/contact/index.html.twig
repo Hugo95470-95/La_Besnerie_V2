@@ -16,9 +16,18 @@
         <li><a href="{{ path('accueil') }}">Accueil</a></li>
         <li><a href="{{ path('presentation') }}">Presentation</a></li>
         <li><a href="{{ path('media') }}">Media</a></li>
-        <li><a href="{{ path('produit') }}">Boutique</a></li>
-        <li><a href="{{ path('app_login') }}">Connexion</a></li>
-        <li><a href="{{ path('register') }}">S'enregistrer</a></li>
+        {% if not app.user %}
+            <li><a href="{{ path('register') }}">S'enregistrer</a></li>
+        {% endif %}
+        {% if not app.user %}
+            <li><a href="{{ path('app_login') }}">Connexion</a></li>
+        {% endif %}
+        {% if app.user %}
+            <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+        {% endif %}
+        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+            <li><a href="{{ path('admin') }}" class="btn">Dashboard</a></li>
+        {% endif %}
     </ul>
 
     <div class="color-band"></div>
@@ -37,6 +46,8 @@
 
     <h1>Contactez-nous</h1>
     <p>📧 Adresse e-mail : <a href="mailto:contact@besnerie.fr">contact@besnerie.fr</a></p>
+    <p>📞 Téléphone : 02 99 99 99 99</p>
+
 
 
         {# {% for message in app.flashes('success') %}

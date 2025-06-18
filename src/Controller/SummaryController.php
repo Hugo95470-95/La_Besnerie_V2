@@ -27,12 +27,19 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use App\Service\CartService;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 
 class SummaryController extends AbstractController
 {
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     #[Route(path: '/summary', name: 'summary')]
     public function index(MailerInterface $mailer, CartService $cartService): Response
     {
+        if (!$this->getUser()) {
+        $this->addFlash('error', 'Vous devez être connecté pour passer une commande.');
+        return $this->redirectToRoute('app_error');
+    }
         // Récupérer le contenu du panier
         $cartItems = $cartService->getCartItems();
         $cartTotal = $cartService->getTotal();
@@ -71,6 +78,9 @@ class SummaryController extends AbstractController
 
             $mailer->send($email);
             $mailSent = true;
+
+            // Vider le panier après validation
+            $cartService->clearCart();
         } catch (\Exception $e) {
             $mailSent = false;
             $this->addFlash('error', "Erreur lors de l'envoi de l'e-mail : " . $e->getMessage());

@@ -9,18 +9,20 @@ body .product_list {
     margin: 20px 0;
     font-weight: bolder;
     font-size: 2rem; /* Taille de police pour les titres des produits */
+    background-color: #fff;
+    border-radius: 10px;
 }
 
-body .product_list ul img {
-    max-width: 150px; /* Taille par défaut des images */
-    max-height: 150px;
-    border-radius: 10px; /* Coins arrondis pour les images */
+body .product_list img {
+    max-width: 100%; /* Taille par défaut des images */
+    max-height: 100%;
+    border-radius: 10px 10px 0px 0px; /* Coins arrondis pour les images */
     transition: transform 0.3s ease; /* Animation au survol */
 }
 
-body .product_list ul img:hover {
-    transform: scale(1.1); /* Agrandit légèrement l'image au survol */
-}
+/* body .product_list ul img:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'image au survol 
+} */
 
 /* Media queries pour les écrans plus petits */
 @media (max-width: 768px) {

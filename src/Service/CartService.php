@@ -34,4 +34,19 @@ class CartService
 
         return $total;
     }
+
+    public function getCartCount(): int
+    {
+        $cart = $this->getCartItems();
+        $count = 0;
+        foreach ($cart as $item) {
+            $count += $item['quantity'];
+        }
+        return $count;
+    }
+
+    public function clearCart(): void
+    {
+        $this->session->remove('cart');
+    }
 }

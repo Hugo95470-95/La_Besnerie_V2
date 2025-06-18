@@ -16,9 +16,19 @@ final class OrderController extends AbstractController
     {
         $cart = $session->get('cart', []);
 
+       $totalProduits = 0;
+        $totalPrix = 0;
+        foreach ($cart as $item) {
+            $totalProduits += $item['quantity'];
+            $totalPrix += $item['product']->getPrice() * $item['quantity'];
+        }
+
         return $this->render('order/index.html.twig', [
             'cart' => $cart,
+            'totalProduits' => $totalProduits,
+            'totalPrix' => $totalPrix,
         ]);
+    
     }
 
     #[Route('/cart/add/{id}', name: 'cart_add', methods: ['POST'])]

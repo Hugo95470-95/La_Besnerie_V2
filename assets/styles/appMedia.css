@@ -1,6 +1,6 @@
 /* Images zoomables */
 .zoomable-image {
-  max-width: 30%;
+  max-width: 29%;
   height: auto;
   cursor: pointer;
   transition: transform 0.2s ease;

@@ -169,10 +169,13 @@ class ProductController extends AbstractController
     }
 
     #[Route('/produit/{id}', name: 'produit_show')]
-    public function show(Product $produit): Response
+    public function show(Product $produit, SessionInterface $session): Response
     {
+        $totalProduits = $this->getCartTotal($session);
+
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
+            'totalProduits' => $totalProduits,
         ]);
     }
 
@@ -196,6 +199,23 @@ class ProductController extends AbstractController
 
         $session->set('cart', $cart);
 
+        $totalProduits = $this->getCartTotal($session);
+
+        return $this->render('order/index.html.twig', [
+            'produit' => $produit,
+            'totalProduits' => $totalProduits,
+        ]);
+
         return $this->redirectToRoute('produit_show', ['id' => $id]);
-    }
 }
+
+        private function getCartTotal(SessionInterface $session): int
+        {
+            $cart = $session->get('cart', []);
+            $total = 0;
+            foreach ($cart as $item) {
+                $total += $item['quantity'];
+            }
+            return $total;
+        }
+    }

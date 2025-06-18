@@ -13,10 +13,22 @@
         <li><a href="{{ path('accueil') }}">Accueil</a></li>
         <li><a href="{{ path('presentation') }}">Presentation</a></li>
         <li><a href="{{ path('media') }}">Media</a></li>
+        <li><a href="{{ path('produit') }}">Boutique</a></li>
         <li><a href="{{ path('contact') }}">Contact</a></li>
-        <li><a href="{{ path('app_login') }}">Connexion</a></li>
-        <li><a href="{{ path('register') }}">S'enregistrer</a></li>
+        {% if not app.user %}
+            <li><a href="{{ path('register') }}">S'enregistrer</a></li>
+        {% endif %}
+        {% if not app.user %}
+            <li><a href="{{ path('app_login') }}">Connexion</a></li>
+        {% endif %}
+        {% if app.user %}
+            <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+        {% endif %}
+        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+            <li><a href="{{ path('admin') }}" class="btn">Dashboard</a></li>
+        {% endif %}
     </ul>
+
 
     <div class="color-band"></div>
 
@@ -31,6 +43,8 @@
         <form action="{{ path('cart_add', {'id': produit.id}) }}" method="post" style="margin-top: 2em;">
             <label for="quantite">Quantité :</label>
             <input type="number" id="quantite" name="quantite" value="1" min="1" required style="width: 60px; margin-left: 0.5em; margin-right: 1em;">
+            <p>Nombre total de produits dans le panier : {{ totalProduits }}</p>
+            <div class="product-details"><h1>{{ produit.name }}</h1></div>
             <button type="submit" class="btn">Ajouter au panier</button>
         </form>
     </div>
@@ -48,26 +62,5 @@
         text-decoration: none;
         text-align: center;
         transition: background-color 0.3s ease, transform 0.2s ease;
-    ">Retour à la liste des produits</a>
-
-    {# <form method="post" action="{{ path('cart_add', {id: produit.id}) }}">
-        <input type="hidden" name="_token" value="{{ csrf_token('add_to_cart' ~ produit.id) }}">
-        <button class="btn btn-primary" style="
-            display: inline-block;
-            margin-top: 10px;
-            padding: 5px 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #black;
-            background-color: rgb(255, 255, 255);
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        ">Ajouter au panier</button>
-    </form> #}
-
-
-    
+    ">Retour à la liste des produits</a> 
 {% endblock %}

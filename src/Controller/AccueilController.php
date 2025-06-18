@@ -21,18 +21,3 @@ class AccueilController extends AbstractController
     }
 }
 
-
-// Code de David
-// {% extends 'base.html.twig' %}
-
-// {% block title %}Accueil{% endblock %}
-
-// {% block body %}
-//     <h1>Accueil</h1>
-
-//     <a href="{{ path('app_boutique') }}">
-//         <button>Boutique</button>
-//     </a>
-// {% endblock %}
-
-// 
