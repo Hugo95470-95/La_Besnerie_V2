@@ -119,11 +119,11 @@ class AccountController extends AbstractController
                 !$user instanceof \Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface ||
                 !$passwordHasher->isPasswordValid($user, $currentPassword)
             ) {
-                $this->addFlash('error', 'Mot de passe actuel incorrect.');
+                $this->addFlash('erreur', 'Mot de passe actuel incorrect.');
             } else {
                 $user->setPassword($passwordHasher->hashPassword($user, $newPassword));
                 $entityManager->flush();
-                $this->addFlash('success', 'Mot de passe modifié avec succès.');
+                $this->addFlash('succès', 'Mot de passe modifié avec succès.');
                 return $this->redirectToRoute('accueil');
             }
         }
@@ -190,7 +190,7 @@ class AccountController extends AbstractController
             $user->setToken(null);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Votre mot de passe a été modifié avec succès.');
+            $this->addFlash('succès', 'Votre mot de passe a été modifié avec succès.');
             return $this->redirectToRoute('app_accueil');
         }
 

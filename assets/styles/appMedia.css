@@ -51,17 +51,17 @@
 /* Media queries pour les écrans plus petits */
 @media (max-width: 768px) {
   .zoomable-image {
-      max-width: 45%; /* Augmente la taille des images pour les tablettes */
+      max-width: 45%; 
       margin: 10px;
   }
 
   .modal-content {
-      max-width: 90%; /* Réduit la taille de la modale pour les tablettes */
+      max-width: 90%; 
       max-height: 90%;
   }
 
   .close {
-      font-size: 30px; /* Réduit la taille de la croix de fermeture */
+      font-size: 30px; 
       top: 15px;
       right: 25px;
   }
@@ -69,17 +69,17 @@
 
 @media (max-width: 480px) {
   .zoomable-image {
-      max-width: 90%; /* Les images prennent presque toute la largeur sur mobile */
+      max-width: 90%; 
       margin: 5px;
   }
 
   .modal-content {
-      max-width: 95%; /* Réduit encore la taille de la modale pour les petits écrans */
+      max-width: 95%; 
       max-height: 95%;
   }
 
   .close {
-      font-size: 25px; /* Réduction supplémentaire de la croix de fermeture */
+      font-size: 25px; 
       top: 10px;
       right: 20px;
   }

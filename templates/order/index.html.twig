@@ -2,61 +2,139 @@
 
 {% block title %}Mon Panier{% endblock %}
 
-{% block body %}
-    <h1>Mon Panier</h1>
-
-    {# Affichage du total du panier #}
-    <p><strong>Nombre total de produits dans le panier : {{ totalProduits }}</strong></p>
-    <p><strong>Prix total du panier : {{ totalPrix|number_format(2, ',', ' ') }} €</strong></p>
-    
-    {% if cart is empty %}
-        <p>Votre panier est vide.</p>
-    {% else %}
-        <ul>
-            {% for item in cart %}
-                <li>
-                    <img src="{{ asset('uploads/images/' ~ item.product.imageMain) }}" alt="{{ item.product.name }}" style="max-width: 100px; max-height: 100px;">
-                    {{ item.product.name }} - {{ item.product.price }} € x {{ item.quantity }}
-
-                    <form method="post" action="{{ path('cart_remove_quantity', {'id': item.product.id}) }}" style="display:inline;">
-                        <input type="number" name="quantite" value="1" min="1" max="{{ item.quantity }}" style="width: 60px;">
-                        <button type="submit" class="btn btn-warning">Retirer</button>
-                    </form>
-
-                    <form method="post" action="{{ path('cart_remove', {id: item.product.id}) }}" style="display:inline;">
-                        <input type="hidden" name="_token" value="{{ csrf_token('remove' ~ item.product.id) }}">
-                        <button class="btn btn-danger">Supprimer</button>
-                    </form>
-
-                </li>
-            {% endfor %}
-        </ul>
-            <a href="{{ path('summary') }}" style="
-                display: inline-block;
-                padding: 7px 7px;
-                font-size: 1rem;
-                font-weight: bold;
-                color: #black;
-                background-color:rgb(255, 255, 255);
-                border: none;
-                border-radius: 5px;
-                text-decoration: none;
-                text-align: center;
-                transition: background-color 0.3s ease, transform 0.2s ease;
-            ">Valider le panier</a>
-    {% endif %}
-
-        <a href="{{ path('produit') }}" style="
+{% block stylesheets %}
+    <style>
+        .cart-summary {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2em;
+        }
+        .cart-summary p {
+            font-size: 1.2em;
+            margin: 0.2em 0;
+        }
+        .cart-list {
+            list-style: none;
+            padding: 0;
+            margin: 2em auto;
+            max-width: 700px;
+        }
+        .cart-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            margin-bottom: 1em;
+            margin-left: 2em;
+            padding: 1em;
+            flex-wrap: wrap;
+        }
+        .cart-product-info {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            flex: 2;
+        }
+        .cart-product-info img {
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 5px;
+            background: #f5f5f5;
+        }
+        .cart-actions {
+            display: flex;
+            gap: 0.5em;
+            flex: 1;
+            justify-content: flex-end;
+        }
+        .cart-actions form {
+            display: inline;
+        }
+        .cart-buttons {
+            display: flex;
+            gap: 1em;
+            justify-content: center;
+            margin-top: 2em;
+            margin-bottom: 3em;
+            flex-wrap: wrap;
+        }
+        .cart-btn {
             display: inline-block;
-            padding: 7px 7px;
+            padding: 20px 18px;
             font-size: 1rem;
             font-weight: bold;
-            color: #black;
-            background-color:rgb(255, 255, 255);
-            border: none;
+            color: #333;
+            background-color: #fff;
             border-radius: 5px;
             text-decoration: none;
             text-align: center;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        ">Continuer vos achats</a>
-    {% endblock %}
+            /* transition: background 0.2s, color 0.2s, border 0.2s; */
+        }
+
+        @media (max-width: 600px) {
+            .cart-list li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .cart-actions {
+                width: 100%;
+                justify-content: flex-start;
+                margin-top: 0.5em;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 style="text-align:center; margin-bottom: 1em;">Mon Panier</h1>
+
+    <div class="cart-summary">
+        <p><strong>Nombre total de produits : {{ totalProduits }}</strong></p>
+        <p><strong>Prix total du panier : {{ totalPrix|number_format(2, ',', ' ') }} €</strong></p>
+    </div>
+    
+    {% if cart is empty %}
+    <p style="text-align:center; font-weight: bold; font-size: 1.4em;">Votre panier est vide.</p>
+    <div style="text-align:center; margin-top: 2em;">
+        <a href="{{ path('produit') }}" class="cart-btn" style="display:inline-block; padding:10px 24px; margin-bottom:25px; background:#fff; color:#000; border-radius:6px; font-weight:bold; text-decoration:none; font-size:1.1em; transition:background 0.2s;">
+            Retour à la boutique
+        </a>
+    </div>
+{% else %}
+    <ul class="cart-list">
+        {% for item in cart %}
+            <li>
+                <div class="cart-product-info">
+                    <img src="{{ asset('uploads/images/' ~ item.product.imageMain) }}" alt="{{ item.product.name }}">
+                    <div>
+                        <div style="font-weight:bold;">{{ item.product.name }}</div>
+                        <div>{{ item.product.price }} € x {{ item.quantity }}</div>
+                    </div>
+                </div>
+                <div class="cart-actions">
+                    <form method="post" action="{{ path('cart_remove_quantity', {'id': item.product.id}) }}">
+                        <input type="number" name="quantite" value="1" min="1" max="{{ item.quantity }}" style="width: 60px;">
+                        <button type="submit" class="btn btn-warning">Retirer</button>
+                    </form>
+                    <form method="post" action="{{ path('cart_remove', {id: item.product.id}) }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('remove' ~ item.product.id) }}">
+                        <button class="btn btn-danger">Supprimer</button>
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="cart-buttons">
+        {% if not app.user %}
+            <p style="text-align:center; color:rgb(0, 0, 0); font-weight: bold; font-size: 1.2em;">
+                Vous devez être connecté pour pouvoir valider votre panier.
+            </p>
+        {% endif %}
+        <a href="{{ path('summary') }}" class="cart-btn">Valider le panier</a>
+        <a href="{{ path('produit') }}" class="cart-btn">Continuer vos achats</a>
+    </div>
+{% endif %}
+{% endblock %}

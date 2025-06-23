@@ -27,14 +27,18 @@
 
 {% block body %}
 
-    <ul>
-        <li><a href="{{ path('accueil') }}">Accueil</a></li>
-        <li><a href="{{ path('presentation') }}">Presentation</a></li>
-        <li><a href="{{ path('media') }}">Media</a></li>
-        <li><a href="{{ path('produit') }}">Boutique</a></li>
-        <li><a href="{{ path('contact') }}">Contact</a></li>
-        <li><a href="{{ path('app_login') }}">Connexion</a></li>
-    </ul>
+    <nav>
+        <ul class="main-nav main-nav-top">
+            <li><a href="{{ path('accueil') }}">Accueil</a></li>
+            <li><a href="{{ path('presentation') }}">Presentation</a></li>
+            <li><a href="{{ path('media') }}">Media</a></li>
+            <li><a href="{{ path('produit') }}">Boutique</a></li>
+            <li><a href="{{ path('contact') }}">Contact</a></li>
+        </ul>
+        <ul class="main-nav main-nav-bottom">
+            <li><a href="{{ path('app_login') }}">Connexion</a></li>
+        </ul>
+    </nav>
 
     <div class="color-band"></div>
 

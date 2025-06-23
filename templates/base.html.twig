@@ -26,8 +26,17 @@
         {% endblock %}
 
         <footer>
-                <img src="{{ asset('images/footer_final.jpg') }}" alt="banniere">
-                <p>La Besnerie, 72340 Chahaignes</p>
+            <div class="footer-img-container">
+                <img src="{{ asset('images/footer_final.jpg') }}" alt="footer">
+                <div class="footer-content">
+                    <p>La Besnerie, 72340 Chahaignes</p>
+                    <ul>
+                        <li><a href="{{ path('cgv') }}">Conditions Générales Utilisation</a></li>
+                        <li><a href="{{ path('confidentialite') }}">Politique de confidentialité</a></li>
+                        <li><a href="{{ path('mention') }}">Mentions légales</a></li>
+                    </ul>
+                </div>
+            </div>
         </footer>
     </body>
 </html>

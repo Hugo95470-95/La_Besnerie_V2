@@ -18,7 +18,7 @@
             <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
         {% endif %}
         {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-            <li><a href="{{ path('admin') }}" class="btn">Dashboard</a></li>
+            <li><a href="{{ path('admin') }}" class="btn">Tableau de bord</a></li>
         {% endif %}
     </ul>
 
